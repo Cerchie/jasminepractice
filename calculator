@@ -1,0 +1,39 @@
+describe('calculating monthly rate', function () {
+  it('should calculate the monthly rate correctly', function () {
+    let res = calculateMonthlyPayment({
+      amount: 2000,
+      years: 10,
+      rate: 1
+    })
+    expect(res).toEqual("17.52");
+    let resultZero = calculateMonthlyPayment({
+      amount: 0,
+      years: 0,
+      rate: 0
+    })
+    expect(resultZero).toEqual("NaN");
+    let resultString = calculateMonthlyPayment({
+      amount: 'ahflj',
+      years: 'ajlfhsjlfh',
+      rate: 'ahifgb'
+    })
+    expect(resultString).toEqual("NaN");
+  });
+});
+describe('returning a result w 2 decimal places', function () {
+  it("should return a result with 2 decimal places", function () {
+    let res = calculateMonthlyPayment({
+      amount: 1,
+      years: 1,
+      rate: 1
+    })
+    expect(res).toEqual("0.08");
+    expect(res).toBeInstanceOf(String);
+  });
+});
+/// etc
+afterEach(function () {
+  res = {};
+  resultZero = {};
+  resultString = {};
+})
